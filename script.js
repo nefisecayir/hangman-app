@@ -1,4 +1,6 @@
 const word_el = document.getElementById('words');
+const correctLetters = ["r", "e", "h", "g", "t"]
+const wrongLetters = [];
 
 function getRandomWord() {
     const words = ["congrats", "youre", "the", "murderer"];
@@ -15,10 +17,17 @@ function displayWord() {
     word_el.innerHTML = `
         ${selectedWord.split('').map(letter => `
             <div class="letter">
-                ${letter}
+                ${correctLetters.includes(letter) ? letter: ''}
             </div>
         `).join('')}
     `;
+    const w = word_el.innerText.replace(/\n/g,'');
+    if (w === selectedWord) {
+        console.log('you found it.')
+    }
+    
+    
+    //console.log(word_el.innerText.replace(/\n/g,''));
 }
 
 displayWord();
