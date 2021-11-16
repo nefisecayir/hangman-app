@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HANG-THE-MAN</title>
+</head>
+<body>
+    <h1>HANG-THE-MAN</h1>
+    <p>Type a letter to find the correct word</p>
+
+    <div class="container">
+        <svg height = "250" width = "250" class="graph">
+            <!-- platform -->
+            <line x1="50" y1="20" x2="130" y2="20"/>
+            <line x1="130" y1="20" x2="130" y2="60"/>
+            <line x1="50" y1="20" x2="130" y2="20"/>
+            <line x1="50" y1="20" x2="50" y2="250"/>
+            <line x1="10" y1="250" x2="90" y2="250"/>
+
+            <!-- head -->
+            <circle cx="130" cy="80" r="22" class="item"/>
+
+            <!-- body -->
+            <line x1="130" y1="100" x2="130" y2="170" class="item"/>
+
+            <!-- arms -->
+            <line x1="130" y1="120" x2="100" y2="100" class="item"/>
+            <line x1="130" y1="120" x2="160" y2="100" class="item"/>
+
+            <!-- legs -->
+            <line x1="130" y1="170" x2="90" y2="200" class="item"/>
+            <line x1="130" y1="170" x2="160" y2="90" class="item"/>
+        </svg>
+
+        <div id="wrong-letters">
+            <h3>WRONG LETTERS</h3>
+            <span>a,b,c</span>
+        </div>
+
+        <div id="words">
+            <div class="letter">t</div>
+            <div class="letter">h</div>
+            <div class="letter">e</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
