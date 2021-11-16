@@ -1,16 +1,13 @@
-const word_el = document.getElementById('word');
+const word_el = document.getElementById('words');
 
 function getRandomWord() {
     const words = ["congrats", "youre", "the", "murderer"];
 
     return words[Math.floor(Math.random() * words.length)];
-    // it chooses regular numbers from 1 to words array index number length from words array
+    // 1 den başlayıp words dizisinin index numarasına kadar sayıları random olarak gösterir
 }
 
-// console.log(getRandomWord());
-
-const correctLetters = ['r', 'e'];
-const wrongLetters = [];
+//console.log(getRandomWord());
 
 function displayWord() {
     const selectedWord = getRandomWord();
@@ -18,13 +15,10 @@ function displayWord() {
     word_el.innerHTML = `
         ${selectedWord.split('').map(letter => `
             <div class="letter">
-                ${correctLetters.includes(letter) ? letter: ''}
-             <div>
-    `).join('')}
-    
+                ${letter}
+            </div>
+        `).join('')}
     `;
-
-    console.log(word_el.innerText.replace(/\n/g,''));
 }
 
 displayWord();
