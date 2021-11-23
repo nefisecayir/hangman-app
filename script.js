@@ -3,11 +3,12 @@ const popup = document.getElementById('popup-container');
 const msg_el = document.getElementById('success-message');
 const wrletters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
-const alert = document.getElementById('alert')
+const alert = document.getElementById('alert');
+const againBtn = document.getElementById('hang-again');
 
 const correctLetters = [];
 const wrongLetters = [];
-const selectedWord = getRandomWord();
+let selectedWord = getRandomWord();
 
 function getRandomWord() {
     const words = ["congrats", "youre", "the", "murderer", "uwu"];
@@ -51,7 +52,7 @@ function updateWrL(){
         const errorCount = wrongLetters.length;
 
         if (index < errorCount) {
-            item.style = 'block';
+            item.style.display = 'block';
         }else {
             item.style.display = 'none';
         }
@@ -69,6 +70,18 @@ function displayAlert() {
         alert.classList.remove('show');
     }, 2000);
 }
+
+againBtn.addEventListener('click', function() {
+    correctLetters.splice(0);
+    wrongLetters.splice(0);
+
+    selectedWord = getRandomWord();
+
+    displayWord();
+    updateWrL();
+
+    popup.style.display = 'none';
+});
 
 window.addEventListener('keydown', function(e) {
     //console.log(e.key);
