@@ -3,6 +3,7 @@ const popup = document.getElementById('popup-container');
 const msg_el = document.getElementById('success-message');
 const wrletters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
+const alert = document.getElementById('alert')
 
 const correctLetters = [];
 const wrongLetters = [];
@@ -17,10 +18,10 @@ function getRandomWord() {
 
 //console.log(getRandomWord());
 
-const displayWord = () =>  {
+function displayWord() {
     
     word_el.innerHTML = ` 
-        ${selectedWord.split('').map((letter) => `
+        ${selectedWord.split('').map(letter => `
             <div class="letter">
                 ${correctLetters.includes(letter) ? letter: ''}
                     
@@ -55,6 +56,18 @@ function updateWrL(){
             item.style.display = 'none';
         }
     })
+    if(wrongLetters.length === items.length) {
+        popup.style.display = 'flex';
+        msg_el.innerText = 'YOU LOST!'
+    }
+}
+
+function displayAlert() {
+    alert.classList.add('show');
+
+    setTimeout(function(){
+        alert.classList.remove('show');
+    }, 2000);
 }
 
 window.addEventListener('keydown', function(e) {
@@ -70,13 +83,15 @@ window.addEventListener('keydown', function(e) {
                 correctLetters.push(letter);
                 displayWord();
             } else {
-                console.log('you already selected this letter.');
+                displayAlert();
                 }
         } else {
             if(!wrongLetters.includes(letter)) {
                 wrongLetters.push(letter);
                 //console.log('update the wrong letters.');
                 updateWrL();
+            }else{
+                displayAlert();
             }
         }
     }
